@@ -1,6 +1,8 @@
 import React from 'react'
 import { Categories } from '../assets/category-data'
 import HeroImage from '../assets/images/hero-image.jpg'
+import Carddetails from '../components/Carddetails'
+import CategorySection from '../components/CategorySection'
 function Home() {
   return (
     <div className='bg-white mt-3 px-4 md:px-15 lg:px-4'>
@@ -21,14 +23,17 @@ function Home() {
             </div>
             <div className='relative w-full md:w-9/12 mt-6 md:mt-0 h-96'>
                 <img src={HeroImage} alt="hero-image" className='w-full h-full'/>
-                <div className='absolute top-46 left-37 md:left-35 lg:left-60' >
+                <div className='absolute top-46 left-37 md:left-35 text-xl lg:left-60' >
                     <h1 className='text-gray-700 text-2xl mb-2 font-bold'>WELCOME TO E-SHOP </h1>
                     <p className='text-xl text-gray-500 '>EASY RETURN | PAY AND DELIVERY </p>
-                    <button className='bg-amber-300 px-3 py-3 hover:bg-amber-700 rounded-2xl cursor-pointer mt-4 
-                    transform transition-transform duration-600 hover:scale-100'>Shop Now</button>
+                    <button className='bg-amber-300 px-3 py-3 hover:bg-amber-700 hover:text-white rounded-2xl cursor-pointer mt-4 
+                    transform transition-transform duration-300 hover:scale-100'>Shop Now</button>
                 </div>
             </div>
         </div>
+        <Carddetails/>
+        <div className='flex items-center justify-center font-bold mt-10 text-2xl text-blue-700 '>Product Category 🌟</div>
+        <CategorySection/>
     </div>
     
   )

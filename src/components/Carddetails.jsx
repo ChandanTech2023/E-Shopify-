@@ -29,12 +29,17 @@ const Carddetails = () => {
       description: 'Get 20% discount on our each products.',
     },
   ]
+
   return (
-    <div>
-      <div>
+    <div className='bg-white pt-13'>
+      <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4'>
         {
-          Carddetails.map((item, index) => (
-            <div key={index}>{item.icon}</div>
+          cardItems.map((item, index) => (
+            <div key={index} className='flex flex-col items-center text-center p-4 border rounded-lg shadow-md transform transition-transform duration-300 hover:scale-104 cursor-pointer'>
+              {item.icon}
+            <h2 className='mt-2 text-xl font-semibold'>{item.title}</h2>
+            <p className='text-gray-600 mt-3'>{item.description}</p>
+            </div>
           ))
         }
       </div>
