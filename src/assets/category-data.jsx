@@ -5,6 +5,7 @@ import Watch2 from '../assets/images/watch2.jpg'
 import Earphone from '../assets/images/earphone.jpeg'
 import Bat from '../assets/images/cricket_bat.jpeg'
 import Electronic from '../assets/images/electronics.jpeg'
+import Tshirt from '../assets/images/men.jpeg'
 export const Categories = [
     'Electronics',
     'Fashions',
@@ -57,5 +58,11 @@ export const mockData = [
         name : "Watch",
         price: 123
     },
+    {
+        id : 8,
+        image : Tshirt,
+        name : "Tshirt",
+        price: 293
+    }
 
 ]

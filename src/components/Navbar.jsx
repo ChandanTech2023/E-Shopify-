@@ -26,9 +26,9 @@ function Navbar() {
       </div>
       <div className='flex items-center justify-center space-x-8 text-sm font-bold mt-4'>
         <Link to='/' className='hover:underline '>Home</Link>
-        <Link to='/' className='hover:underline '>About</Link>
-        <Link to='/' className='hover:underline '>Shop</Link>
-        <Link to='/' className='hover:underline '>Contact</Link>
+        <Link to='/about' className='hover:underline '>About</Link>
+        <Link to='/shop' className='hover:underline '>Shop</Link>
+        <Link to='/contact' className='hover:underline '>Contact</Link>
       </div>
     </nav>
   )

@@ -7,7 +7,7 @@ import { setProducts } from '../redux/productSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import ProductCard from '../components/ProductCard'
-
+import Shop from './Shop'
 function Home() {
     const dispatch = useDispatch()
     const products = useSelector(state => state.product.products)
@@ -17,7 +17,7 @@ function Home() {
     }, [dispatch])
 
     return (
-        <div className='bg-white mt-3 px-4 md:px-15 lg:px-4'>
+        <div className='bg-white mt-3 px-4 md:px-12 lg:px-24'>
             <div className='container mx-auto py-4 flex flex-col md:flex-row space-x-2'>
                 <div className='w-full  md:w-2/12 '>
                     <div className='bg-blue-400 text-white font-bold text-xs px-2 py-2.5'>
@@ -46,20 +46,21 @@ function Home() {
             <Carddetails />
             <div className='flex items-center justify-center font-bold mt-10 text-2xl text-blue-600 '>Product Category 🌟</div>
             <CategorySection />
-            <div className='container mx-auto py-12'>
+            <div className='container mx-auto py-5'>
                 <h2 className='text-2xl mb-7 font-bold text-center text-blue-600'>Top Products 🔥</h2>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5'>
+                <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5'>
                     {
                         products?.slice(0,5).map((product) => (
                             // <div key={product.id}>{product.name}</div>
-                            <ProductCard product={product}/>
+                            <ProductCard product={product} key={product.id} />
                         ))
                     }
                 </div>
-                
-            </div>
-        </div>
 
+            </div>
+            <Shop />
+            
+        </div>
     )
 }
 
