@@ -2,6 +2,7 @@ import React from 'react'
 import { FaStar } from 'react-icons/fa'
 import { addtoCart } from '../redux/cartSlice'
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
 function ProductCard({ product }) {
 
@@ -10,7 +11,17 @@ function ProductCard({ product }) {
         e.stopPropagation(); // Prevent parent onClick
         e.preventDefault(); // Prevent default behavior
         dispatch(addtoCart(product))
-        alert("product added successfully ")
+        // alert("product added successfully ")
+
+        // // Display Success Toast
+        // toast.success(`${product.name} added to cart!`, {
+        //     position: 'top-right',
+        //     autoClose: 3000, // 3 seconds
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        // });
 
 
     }
