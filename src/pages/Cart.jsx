@@ -73,11 +73,11 @@ function Cart() {
                 </div>
                 <button className='w-full bg-red-500 text-white py-2'>Proced to Checkout </button>
               </div>
-            </div>
-            <Modal isModelOpen={isModelOpen}
+            <Modal isModelOpen={isModelOpen} 
               setIsModelOpen={setIsModelOpen}>
               <ChangeAddress setAddress={setAddress} setIsModelOpen={setIsModelOpen}/>
             </Modal>
+            </div>
           </div>
         ) : (
           <div className="flex justify-center">
