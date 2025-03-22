@@ -3,7 +3,7 @@ import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 function Footer() {
   return (
-    <footer className='bg-gray-700 text-white py-6 px-4 md:px-16 lg:px-24'>
+    <footer className='bg-gray-700 text-white py-6 mt-2 px-4 md:px-16 lg:px-24'>
       <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5'>
         <div>
           <h3 className='text-xl font-semibold'>E-Shopify</h3>

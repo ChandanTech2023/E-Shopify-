@@ -51,7 +51,7 @@ const cartSlice = createSlice({
             // Increase totalQuantity and totalPice
             state.totalPrice += newItem.price;
             state.totalQuantity++;
-            // Show success toast
+            
             
         }
     }
