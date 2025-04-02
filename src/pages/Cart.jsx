@@ -4,23 +4,25 @@ import EmptyCart from '../assets/images/emptycart.png'
 import { FaTrashAlt } from 'react-icons/fa'
 import Modal from '../components/Modal'
 import ChangeAddress from '../components/ChangeAddress'
+import { useDispatch } from 'react-redux'
+import { removeFromCart } from '../redux/cartSlice'
 function Cart() {
   const cart = useSelector((state) => state.cart)
   const [address, setAddress] = useState('main street,Sh-84 ,848212')
   const [isModelOpen, setIsModelOpen] = useState(false)
-
-
+  const dispatch = useDispatch();
+  // console.log(cart);
   return (
-    <div className='container mx-auto py-8 min-h-90 md:px-16 lg:px-24'>
+    <div className='container mx-auto py-8 min-h-90 md:px-6 lg:px-12 '>
       {
         cart.products.length > 0 ? (
-          <div className='bg-gray-200 rounded-lg p-3'>
+          <div className='bg-gray-300 rounded-lg p-3'>
             <h2 className='text-2xl font-semibold mb-5'>Shopping Card</h2>
-            <div className='flex flex-col md:flex-row justify-between space-x-10 mt-6'>
+            <div className='w-full flex flex-col md:flex-row justify-between sm:space-x-4 mt-6'>
               <div className=' md:w-2/3'>
                 <div className='flex justify-between border-b items-center mb-4 text-xs font-bold'>
                   <p >Products</p>
-                  <div className='flex space-x-5'>
+                  <div className='flex items-center space-x-2 md:space-x-4 lg:space-x-6'>
                     <p>Price </p>
                     <p>Quantity</p>
                     <p>Subtotal</p>
@@ -31,15 +33,15 @@ function Cart() {
                   {
                     cart.products.map((product) => (
                       <div key={product.id}
-                        className='flex items-center justify-between p-3 border-b'>
+                        className='flex items-center justify-between border-b'>
                         <div className='md:flex items-center space-x-3 cursor-pointer'>
                           <img src={product.image} alt={product.name}
                             className='w-18 h-18 rounded object-contain' />
-                          <div className='ml-4 flex-1'>
+                          <div className='flex-1 '>
                             <h3 className='text-lg font-semibold'>{product.name}</h3>
                           </div>
                         </div>
-                        <div className='flex items-center space-x-9 '>
+                        <div className='flex items-center space-x-2 md:space-x-4'>
                           <p>${product.price}</p>
                           <div className='flex items-center justify-center border'>
                             <button className='text-xl font-bold px-1.5 border-r'>-</button>
@@ -47,13 +49,15 @@ function Cart() {
                             <button className='text-xl font-bold px-1 border-l'>+</button>
                           </div>
                           <p>${(product.quantity * product.price).toFixed(2)}</p>
-                          <button className='text-red-400 hover:text-red-600 cursor-pointer'><FaTrashAlt size={20} /></button>
+                          <button className='text-red-400 hover:text-red-600 cursor-pointer'
+                            onClick={() => dispatch(removeFromCart(product.id))} >
+                            <FaTrashAlt size={20} /></button>
                         </div>
                       </div>
                     ))}
                 </div>
               </div>
-              <div className='bg-white md:w-1/3 p-6 rounded-lg shadow-md border' >
+              <div className='bg-white md:w-1/3 p-6 rounded-lg shadow-md border mt-4' >
                 <h3 className='font-semibold text-sm mb-3'>CART TOTAL</h3>
                 <div className='flex justify-between mb-5 border-b pb-1'>
                   <span className='text-sm text-gray-800 font-semibold'>Total item :</span>
@@ -71,17 +75,17 @@ function Cart() {
                   <span>Total Price:</span>
                   <span>{cart.totalPrice.toFixed(2)}</span>
                 </div>
-                <button className='w-full bg-red-500 text-white py-2'>Proced to Checkout </button>
+                <button className='w-full cursor-pointer bg-red-500 text-white py-2'>Proced to Checkout </button>
               </div>
-            <Modal isModelOpen={isModelOpen} 
-              setIsModelOpen={setIsModelOpen}>
-              <ChangeAddress setAddress={setAddress} setIsModelOpen={setIsModelOpen}/>
-            </Modal>
+              <Modal isModelOpen={isModelOpen}
+                setIsModelOpen={setIsModelOpen}>
+                <ChangeAddress setAddress={setAddress} setIsModelOpen={setIsModelOpen} />
+              </Modal>
             </div>
           </div>
         ) : (
           <div className="flex justify-center">
-            <img src={EmptyCart} alt="empty cart" className='h-84 ' />
+            <img src={EmptyCart} alt="empty cart" className='h-94 ' />
           </div>
         )}
 

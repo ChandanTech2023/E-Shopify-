@@ -51,11 +51,27 @@ const cartSlice = createSlice({
             // Increase totalQuantity and totalPice
             state.totalPrice += newItem.price;
             state.totalQuantity++;
-            
-            
+        },
+        removeFromCart(state, action) {
+            const id = action.payload;
+            const findIndex = state.products.find(item => item.id === id)
+            if (findIndex) {
+                state.totalPrice -= findIndex.totalPrice;
+                state.totalQuantity -= findIndex.quantity;
+                state.products = state.products.filter(item => item.id !== id)
+                toast.error('Product removed from cart!', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+
+            }
         }
     }
 })
 //Export addtoCart action and use it in ProductCard
-export const { addtoCart } = cartSlice.actions
+export const { addtoCart, removeFromCart } = cartSlice.actions
 export default cartSlice.reducer
