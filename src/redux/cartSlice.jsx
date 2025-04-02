@@ -69,9 +69,32 @@ const cartSlice = createSlice({
                 });
 
             }
+        },
+        increaseQuantity(state, action) {
+            const id = action.payload;
+            const findIndex = state.products.find(item => item.id === id)
+            if (findIndex) {
+                findIndex.quantity += 1;
+                findIndex.totalPrice += findIndex.price;
+                state.totalPrice += findIndex.price;
+                state.totalQuantity++;
+                state.totalPrice += findIndex.price;
+            }
+        },
+        decreaseQuantity(state, action) {
+            const id = action.payload;
+            const findIndex = state.products.find(item => item.id === id)
+            if(findIndex.quantity > 1){
+                findIndex.quantity -= 1;
+                findIndex.totalPrice -= findIndex.price;
+                state.totalPrice -= findIndex.price;
+                state.totalQuantity--;
+                state.totalPrice -= findIndex.price;
+            }
+            
         }
-    }
+    },
 })
 //Export addtoCart action and use it in ProductCard
-export const { addtoCart, removeFromCart } = cartSlice.actions
+export const { addtoCart, removeFromCart ,decreaseQuantity,increaseQuantity} = cartSlice.actions
 export default cartSlice.reducer

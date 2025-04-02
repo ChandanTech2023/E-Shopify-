@@ -5,7 +5,8 @@ import { FaTrashAlt } from 'react-icons/fa'
 import Modal from '../components/Modal'
 import ChangeAddress from '../components/ChangeAddress'
 import { useDispatch } from 'react-redux'
-import { removeFromCart } from '../redux/cartSlice'
+import { decreaseQuantity, removeFromCart ,increaseQuantity} from '../redux/cartSlice'
+
 function Cart() {
   const cart = useSelector((state) => state.cart)
   const [address, setAddress] = useState('main street,Sh-84 ,848212')
@@ -44,9 +45,13 @@ function Cart() {
                         <div className='flex items-center space-x-2 md:space-x-4'>
                           <p>${product.price}</p>
                           <div className='flex items-center justify-center border'>
-                            <button className='text-xl font-bold px-1.5 border-r'>-</button>
+                            <button className='text-xl font-bold px-1.5 border-r'
+                            onClick={()=>dispatch(decreaseQuantity(product.id))}
+                            >-</button>
                             <p className='text-xl px-3'>{product.quantity}</p>
-                            <button className='text-xl font-bold px-1 border-l'>+</button>
+                            <button className='text-xl font-bold px-1 border-l'
+                            onClick={()=>dispatch(increaseQuantity(product.id))}
+                            >+</button>
                           </div>
                           <p>${(product.quantity * product.price).toFixed(2)}</p>
                           <button className='text-red-400 hover:text-red-600 cursor-pointer'
