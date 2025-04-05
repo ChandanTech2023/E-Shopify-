@@ -6,6 +6,7 @@ import Shop from './pages/Shop'
 import Cart from './pages/Cart'
 import { ToastContainer } from 'react-toastify'
 import ProductCard from './components/ProductCard'
+import CheckoutPage from './pages/CheckoutPage'
 function App() {
 
 
@@ -17,12 +18,13 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/shop' element={<Shop />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
-        <Route path="/" element={<ProductCard product={{
+        <Route path="/productcart" element={<ProductCard product={{
           id: 1,
           name: "Sample Product",
           price: 99,
           image: ""
         }} />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
 
 
       </Routes>
